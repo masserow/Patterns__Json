@@ -49,7 +49,8 @@ class AuthTest {
         login.setValue(notRegisteredUser.getLogin());
         password.setValue(notRegisteredUser.getPassword());
         enter.click();
-        $(".notification__content").shouldHave(text("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content")
+                .shouldHave(visible, text("Ошибка! Неверно указан логин или пароль"));
 
 
 
@@ -63,7 +64,7 @@ class AuthTest {
         password.setValue(blockedUser.getPassword());
         enter.click();
         $("[data-test-id='error-notification'] .notification__content")
-                .shouldHave(text("Ошибка! Пользователь заблокирован"));
+                .shouldHave(visible, text("Ошибка! Пользователь заблокирован"));
 
 
     }
@@ -77,7 +78,7 @@ class AuthTest {
         password.setValue(registeredUser.getPassword());
         enter.click();
         $("[data-test-id='error-notification'] .notification__content")
-                .shouldHave(text("Ошибка! Неверно указан логин или пароль"));
+                .shouldHave(visible, text("Ошибка! Неверно указан логин или пароль"));
 
 
     }
@@ -92,7 +93,7 @@ class AuthTest {
         password.setValue(wrongPassword);
         enter.click();
         $("[data-test-id='error-notification'] .notification__content")
-                .shouldHave(text("Ошибка! Неверно указан логин или пароль"));
+                .shouldHave(visible, text("Ошибка! Неверно указан логин или пароль"));
 
 
     }
